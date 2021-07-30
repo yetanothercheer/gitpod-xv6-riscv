@@ -1,3 +1,8 @@
+github:
+  prebuilds:
+    # enable for the default branch (defaults to true)
+    master: false
+
 vscode:
   extensions:
     - llvm-vs-code-extensions.vscode-clangd
