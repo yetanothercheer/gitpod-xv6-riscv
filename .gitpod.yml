@@ -1,3 +1,9 @@
+vscode:
+  extensions:
+    - llvm-vs-code-extensions.vscode-clangd
+    - vscodevim.vim
+    - jolaleye.horizon-theme-vscode
+
 tasks:
   - name: XV6-RISCV
     init: |
@@ -8,14 +14,8 @@ tasks:
       echo Installing dependencies...
       sudo apt-get update
       sudo apt-get install git build-essential gdb-multiarch qemu-system-misc gcc-riscv64-linux-gnu binutils-riscv64-linux-gnu -y
-      echo VSCode Extension: clangd
-      code --install-extension llvm-vs-code-extensions.vscode-clangd
-      echo Horizon theme!
-      code --install-extension jolaleye.horizon-theme-vscode
-      echo Vim is indispensable.
-      code --install-extension vscodevim.vim
       echo Create a directory called .vscode...
-      mkdir .vscode
+      mkdir -p .vscode
       echo Sync with custom settings...
       curl https://gist.githubusercontent.com/yetanothercheer/1e66c70c52a5c2434135e93c083dca6a/raw/3c2f788848d22a20e58064c28f04635bc05bdbee/settings.json > .vscode/settings.json
       echo Bear can generate compile_commands.json for clangd
