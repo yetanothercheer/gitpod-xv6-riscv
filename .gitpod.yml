@@ -1,0 +1,27 @@
+tasks:
+  - name: XV6-RISCV
+    init: |
+      echo Delete everything...
+      find . -mindepth 1 -delete
+      echo Clone xv6-riscv...
+      git clone https://github.com/mit-pdos/xv6-riscv.git .
+      echo Installing dependencies...
+      sudo apt-get update
+      sudo apt-get install git build-essential gdb-multiarch qemu-system-misc gcc-riscv64-linux-gnu binutils-riscv64-linux-gnu -y
+      echo VSCode Extension: clangd
+      code --install-extension llvm-vs-code-extensions.vscode-clangd
+      echo Horizon theme!
+      code --install-extension jolaleye.horizon-theme-vscode
+      echo Vim is indispensable.
+      code --install-extension vscodevim.vim
+      echo Create a directory called .vscode...
+      mkdir .vscode
+      echo Sync with custom settings...
+      curl https://gist.githubusercontent.com/yetanothercheer/1e66c70c52a5c2434135e93c083dca6a/raw/3c2f788848d22a20e58064c28f04635bc05bdbee/settings.json > .vscode/settings.json
+      echo Bear can generate compile_commands.json for clangd
+      sudo apt-get install bear -y
+      echo Building...
+      bear make
+    command: |
+      date
+      echo Check out https://pdos.csail.mit.edu/6.S081/2020/schedule.html
